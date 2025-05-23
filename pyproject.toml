@@ -1,6 +1,6 @@
 [project]
 name = "pass_gen_on_terminal"
-version = "0.1.1"
+version = "0.2.0"
 description = "This is final project on CS50 Python."
 authors = [{name = "MarkAlexI"}]
 dependencies = []
