@@ -1,6 +1,7 @@
 import string
 import pytest
 from project import generate_password
+from project import is_strong_password
 
 
 # test generate_password
@@ -33,3 +34,36 @@ def test_all_char_types():
     assert any(char in string.ascii_letters for char in password)
     assert any(char in string.digits for char in password)
     assert any(char in string.punctuation for char in password)
+
+
+# test is_strong_password
+def test_strong_password():
+    assert is_strong_password("Abcdef1!")
+
+
+def test_too_short():
+    assert not is_strong_password("Ab1!")
+
+
+def test_missing_uppercase():
+    assert not is_strong_password("abcdef1!")
+
+
+def test_missing_lowercase():
+    assert not is_strong_password("ABCDEF1!")
+
+
+def test_missing_digit():
+    assert not is_strong_password("Abcdefg!")
+
+
+def test_missing_special():
+    assert not is_strong_password("Abcdefg1")
+
+
+def test_only_special_and_digit():
+    assert not is_strong_password("1234!@#$")
+
+
+def test_exact_minimum_valid():
+    assert is_strong_password("A1b2c3!@")
