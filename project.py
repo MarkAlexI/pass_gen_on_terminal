@@ -23,14 +23,22 @@ def is_strong_password(password):
     return all([has_upper, has_lower, has_digit, has_special, len(password) >= 8])
 
 
+def save_password_to_file(password, filename="passwords.txt"):
+    with open(filename, "a", encoding="utf-8") as file:
+        file.write(password + "\n")
+
+
 def main():
     new_password = generate_password()
     print(new_password)
 
     if is_strong_password(new_password):
         print("This password is strong.")
+        save_password_to_file(new_password)
+        print("Password is saving to file.")
     else:
         print("Warning: the password is not very secure.")
+        print("Password not saving to file.")
 
 
 if __name__ == "__main__":
