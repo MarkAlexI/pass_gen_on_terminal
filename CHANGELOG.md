@@ -1,3 +1,9 @@
+## v0.3.0 (2025-05-25)
+
+### Feat
+
+- **project.py-=>-save_password_to_file**: add automatically saving created password to file
+
 ## v0.2.1 (2025-05-24)
 
 ## v0.2.0 (2025-05-23)
