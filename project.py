@@ -41,5 +41,12 @@ def main():
         print("Password not saving to file.")
 
 
+def load_passwords_from_file(filename="passwords.txt"):
+    if not os.path.exists(filename):
+        return []
+    with open(filename, "r", encoding="utf-8") as file:
+        return [line.strip() for line in file.readlines()]
+
+
 if __name__ == "__main__":
     main()
