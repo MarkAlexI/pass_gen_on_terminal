@@ -1,3 +1,9 @@
+## v0.4.0 (2025-05-27)
+
+### Feat
+
+- **project.py-=>-load_passwords_from_file**: add loading passwords from file
+
 ## v0.3.1 (2025-05-26)
 
 ## v0.3.0 (2025-05-25)
