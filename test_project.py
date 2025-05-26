@@ -2,6 +2,7 @@ import string
 import pytest
 from project import generate_password
 from project import is_strong_password
+from project import save_password_to_file
 
 
 # test generate_password
@@ -67,3 +68,34 @@ def test_only_special_and_digit():
 
 def test_exact_minimum_valid():
     assert is_strong_password("A1b2c3!@")
+
+
+# test saving password to file
+def test_save_password_to_file(tmp_path):
+    # Arrange
+    test_password = "Test123!"
+    test_file = tmp_path / "test_passwords.txt"
+
+    # Act
+    save_password_to_file(test_password, filename=str(test_file))
+
+    # Assert
+    with open(test_file, "r", encoding="utf-8") as f:
+        content = f.read().strip()
+    assert content == test_password
+
+
+def test_save_multiple_passwords_to_file(tmp_path):
+    # Arrange
+    passwords = ["Pass1!", "Secure123$", "MyPassword#2025"]
+    test_file = tmp_path / "test_passwords.txt"
+
+    # Act
+    for pwd in passwords:
+        save_password_to_file(pwd, filename=str(test_file))
+
+    # Assert
+    with open(test_file, "r", encoding="utf-8") as f:
+        lines = [line.strip() for line in f.readlines()]
+
+    assert lines == passwords
