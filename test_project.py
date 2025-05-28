@@ -3,6 +3,7 @@ import pytest
 from project import generate_password
 from project import is_strong_password
 from project import save_password_to_file
+from project import load_passwords_from_file
 
 
 # test generate_password
@@ -99,3 +100,29 @@ def test_save_multiple_passwords_to_file(tmp_path):
         lines = [line.strip() for line in f.readlines()]
 
     assert lines == passwords
+
+
+# test load_passwords_from_file
+def test_load_passwords_from_existing_file(tmp_path):
+    # Arrange
+    passwords = ["abcDEF1!", "123qweRT$", "TestPass@2025"]
+    test_file = tmp_path / "passwords.txt"
+    for pwd in passwords:
+        save_password_to_file(pwd, filename=str(test_file))
+
+    # Act
+    loaded_passwords = load_passwords_from_file(filename=str(test_file))
+
+    # Assert
+    assert loaded_passwords == passwords
+
+
+def test_load_passwords_from_nonexistent_file(tmp_path):
+    # Arrange
+    non_existing_file = tmp_path / "no_such_file.txt"
+
+    # Act
+    passwords = load_passwords_from_file(filename=str(non_existing_file))
+
+    # Assert
+    assert passwords == []
