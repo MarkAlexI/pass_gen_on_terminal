@@ -1,3 +1,9 @@
+## v0.5.0 (2025-05-29)
+
+### Feat
+
+- **project.py**: extend main function, add argparse
+
 ## v0.4.1 (2025-05-28)
 
 ## v0.4.0 (2025-05-27)
