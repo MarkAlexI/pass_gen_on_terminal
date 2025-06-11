@@ -42,5 +42,4 @@ Password strength validation was built in to help users understand whether the g
 ### Usage Examples:
 
 To generate a password with all features:
-```bash
-python project.py -l 16 -d -s -f
+`python project.py -l 16 -d -s -f`
